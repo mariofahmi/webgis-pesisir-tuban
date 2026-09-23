@@ -98,6 +98,34 @@
     .sf-btn.active { color: #fff; background: var(--bg4); border-color: var(--accent); }
 
     .sb-list { flex: 1; overflow-y: auto; }
+    .sb-footer {
+      padding: 9px 12px;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .sb-footer strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .h-badge-author {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 10px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(37, 99, 235, 0.25));
+      border: 1px solid #38bdf8;
+      border-radius: 12px;
+      color: #7dd3fc;
+      font-size: 11px;
+      font-weight: 700;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+      white-space: nowrap;
+    }
     .kec-hdr {
       padding: 9px 12px 6px; font-size: 10px; font-weight: 800;
       text-transform: uppercase; letter-spacing: .8px;
@@ -306,7 +334,10 @@
   <button class="mob-toggle" onclick="toggleSidebar()">☰ Menu</button>
   <span class="h-logo">🛰️</span>
   <div class="h-titles">
-    <h1>WebGIS Pesisir Tuban — AI Studio & Leaflet</h1>
+    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+      <h1>WebGIS Pesisir Tuban — AI Studio & Leaflet</h1>
+      <span class="h-badge-author">Perancang: Mario Fahmi Syahrial</span>
+    </div>
     <p>Basemap: Esri Satelit & Hybrid · 77 Titik GPS · 5 Kecamatan · Smart Spatial AI</p>
   </div>
 
@@ -350,6 +381,10 @@
       </div>
     </div>
     <div class="sb-list" id="sb-list"></div>
+    <div class="sb-footer">
+      <span>Perancang: <strong>Mario Fahmi Syahrial</strong></span>
+      <span>Tuban, Jatim</span>
+    </div>
   </div>
 
   <!-- Map -->
@@ -428,7 +463,7 @@
     <div class="ai-chat-body" id="ai-chat-body">
       <div class="ai-msg bot">
         <div class="ai-bubble">
-          Halo! Saya **AI Assistant Spatial WebGIS Pesisir Tuban** didukung Google Gemini. Saya bisa membantu Anda menganalisis sebaran foto GPS, statistik per kecamatan, hingga mencari titik lokasi tertentu. Ada yang bisa saya bantu?
+          Halo! Saya **AI Assistant Spatial WebGIS Pesisir Tuban** yang dirancang oleh **Mario Fahmi Syahrial** dan didukung Google Gemini. Saya bisa membantu Anda menganalisis sebaran foto GPS, statistik per kecamatan, hingga mencari titik lokasi tertentu. Ada yang bisa saya bantu?
         </div>
         <div class="ai-time">AI Engine System</div>
       </div>
@@ -547,7 +582,7 @@ const COLOR = {
 // ─── BASEMAP TILES ───────────────────────────────────────────
 const TILES = {
   satellite: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles © Esri — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP',
+    attribution: 'Tiles © Esri | WebGIS Pesisir Tuban — Perancang: Mario Fahmi Syahrial',
     maxZoom: 19
   }),
   hybrid: L.layerGroup([
@@ -861,7 +896,8 @@ async function sendAIMessage() {
   if (apiKey) {
     appendChatMsg('bot', '⏳ Menghubungi Gemini 2.0 via Google AI Studio API...');
     try {
-      const systemPrompt = `Anda adalah Asisten AI WebGIS Pesisir Tuban. Berikut rangkuman data 77 titik foto GPS: 
+      const systemPrompt = `Anda adalah Asisten AI WebGIS Pesisir Tuban yang dirancang oleh Mario Fahmi Syahrial. Berikut rangkuman data 77 titik foto GPS: 
+- Perancang / Author: Mario Fahmi Syahrial
 - Total Foto: 212 foto di 5 Kecamatan (Bancar, Jenu, Palang, Tambakboyo, Tuban).
 - Kecamatan Bancar: 14 titik lokasi.
 - Kecamatan Jenu: 22 titik lokasi (Termasuk Pantai Cemara & Terminal Wisata Tuban).
@@ -903,7 +939,9 @@ function runSmartLocalEngine(q) {
   const query = q.toLowerCase();
   let reply = '';
 
-  if (query.includes('sebaran') || query.includes('kecamatan')) {
+  if (query.includes('perancang') || query.includes('pembuat') || query.includes('author') || query.includes('creator') || query.includes('mario')) {
+    reply = `👨‍💻 **Perancang Sistem**:\nWebGIS Pesisir Tuban ini dirancang dan dikembangkan oleh **Mario Fahmi Syahrial** sebagai portal riset pemetaan spasial dan dokumentasi foto ber-GPS di sepanjang pesisir Kabupaten Tuban.`;
+  } else if (query.includes('sebaran') || query.includes('kecamatan')) {
     reply = `📊 **Sebaran Titik Foto Pesisir Tuban (77 Titik Total)**:\n` +
       `• **Kec. Jenu**: 22 Titik (Terbanyak)\n` +
       `• **Kec. Palang**: 16 Titik\n` +
@@ -922,6 +960,7 @@ function runSmartLocalEngine(q) {
     filterSidebar();
   } else if (query.includes('ringkas') || query.includes('peta') || query.includes('statistik')) {
     reply = `📝 **Ringkasan WebGIS Pesisir Tuban**:\n` +
+      `• **Perancang**: Mario Fahmi Syahrial\n` +
       `• Wilayah mencakup 5 Kecamatan Pesisir Utara Tuban.\n` +
       `• Total 212 foto dikelompokkan ke dalam 77 titik koordinat presisi GPS.\n` +
       `• Pengambilan sampel dilakukan menggunakan GPS Map Camera.`;

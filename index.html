@@ -24,8 +24,9 @@
       height: 58px; background: linear-gradient(90deg, #050a10 0%, #0d1a2d 50%, #061120 100%);
       border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 20px;
     }
-    .h-title { font-size: 16px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; }
-    .h-link { background: var(--accent); color: #000; padding: 6px 14px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 12px; transition: transform 0.2s; }
+    .h-title { font-size: 16px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .h-author { font-size: 12px; font-weight: 600; color: #93c5fd; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); padding: 3px 10px; border-radius: 12px; }
+    .h-link { background: var(--accent); color: #000; padding: 6px 14px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 12px; transition: transform 0.2s; white-space: nowrap; }
     .h-link:hover { transform: scale(1.05); }
 
     .main-wrap { display: flex; height: calc(100vh - 58px); }
@@ -37,6 +38,7 @@
 <header>
   <div class="h-title">
     <span>🛰️</span> WebGIS Pesisir Tuban — Portal Riset Foto GPS
+    <span class="h-author">Perancang: Mario Fahmi Syahrial</span>
   </div>
   <a href="webgis_leaflet.html" class="h-link">🚀 Buka Mode Fullscreen WebGIS</a>
 </header>
