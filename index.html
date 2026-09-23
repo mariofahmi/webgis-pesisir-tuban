@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+  <link rel="icon" type="image/png" href="logo.png"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -25,6 +26,7 @@
       border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 20px;
     }
     .h-title { font-size: 16px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .h-logo-img { height: 38px; width: 38px; object-fit: contain; filter: drop-shadow(0 0 6px rgba(255,255,255,0.3)); border-radius: 6px; }
     .h-author { font-size: 12px; font-weight: 600; color: #93c5fd; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); padding: 3px 10px; border-radius: 12px; }
     .h-link { background: var(--accent); color: #000; padding: 6px 14px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 12px; transition: transform 0.2s; white-space: nowrap; }
     .h-link:hover { transform: scale(1.05); }
@@ -37,7 +39,8 @@
 
 <header>
   <div class="h-title">
-    <span>🛰️</span> WebGIS Pesisir Tuban — Portal Riset Foto GPS
+    <img src="logo.png" alt="MF Logo" class="h-logo-img">
+    <span>WebGIS Pesisir Tuban — Portal Riset Foto GPS</span>
     <span class="h-author">Perancang: Mario Fahmi Syahrial</span>
   </div>
   <a href="webgis_leaflet.html" class="h-link">🚀 Buka Mode Fullscreen WebGIS</a>

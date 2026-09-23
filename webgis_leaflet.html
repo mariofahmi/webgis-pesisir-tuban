@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
   <!-- Google Font -->
+  <link rel="icon" type="image/png" href="logo.png"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -45,7 +46,18 @@
       position: relative; z-index: 1000; flex-shrink: 0;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
-    .h-logo { font-size: 24px; filter: drop-shadow(0 0 6px rgba(56,189,248,0.5)); }
+    .h-logo-img {
+      height: 38px;
+      width: 38px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+      border-radius: 6px;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .h-logo-img:hover {
+      transform: scale(1.08);
+    }
     .h-titles h1 { font-size: 15px; font-weight: 800; letter-spacing: -0.2px; background: linear-gradient(90deg, #fff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .h-titles p { font-size: 11px; color: var(--text2); margin-top: 1px; }
 
@@ -332,7 +344,7 @@
 
 <header>
   <button class="mob-toggle" onclick="toggleSidebar()">☰ Menu</button>
-  <span class="h-logo">🛰️</span>
+  <img src="logo.png" alt="MF Logo" class="h-logo-img">
   <div class="h-titles">
     <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
       <h1>WebGIS Pesisir Tuban — AI Studio & Leaflet</h1>
@@ -382,7 +394,10 @@
     </div>
     <div class="sb-list" id="sb-list"></div>
     <div class="sb-footer">
-      <span>Perancang: <strong>Mario Fahmi Syahrial</strong></span>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <img src="logo.png" alt="MF Logo" style="height:20px;width:20px;object-fit:contain;border-radius:3px;">
+        <span>Perancang: <strong>Mario Fahmi Syahrial</strong></span>
+      </div>
       <span>Tuban, Jatim</span>
     </div>
   </div>
@@ -451,7 +466,10 @@
   <!-- AI Drawer Panel -->
   <div class="ai-drawer" id="ai-drawer">
     <div class="ai-header">
-      <div class="ai-title">✨ AI Assistant — Gemini AI Studio</div>
+      <div class="ai-title" style="display:flex;align-items:center;gap:8px;">
+        <img src="logo.png" alt="MF Logo" style="height:22px;width:22px;object-fit:contain;border-radius:3px;">
+        <span>AI Assistant — Gemini AI Studio</span>
+      </div>
       <button class="ai-close" onclick="toggleAIDrawer()">✕</button>
     </div>
 
